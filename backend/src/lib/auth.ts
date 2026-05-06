@@ -4,11 +4,14 @@ import { admin } from 'better-auth/plugins'
 import { db } from '../db/index.js'
 import * as authSchema from '../db/schema/auth.js'
 import { ac, userRole, adminRole, superAdminRole } from '@imp/shared/permissions'
+
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: 'pg',
     schema: authSchema,
   }),
+  baseURL: "https://abae.my.id",
+  basePath: "/api/auth",
     trustedOrigins: [process.env.FRONTEND_URL!],
 
 

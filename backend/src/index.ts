@@ -10,7 +10,7 @@ import { migrate } from 'drizzle-orm/postgres-js/migrator'
 import { db } from './db/index.js'  // sesuaikan import db kamu
 
 // Auto migrate saat startup
-await migrate(db, { migrationsFolder: './migrations' })
+await migrate(db, { migrationsFolder: './src/db/migrations' })
 
 console.log('Migration done')
 

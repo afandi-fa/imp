@@ -13,7 +13,6 @@ COPY frontend ./frontend
 ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
 
-RUN pnpm --filter @imp/shared build
 RUN pnpm --filter @imp/frontend build
 
 FROM nginx:alpine

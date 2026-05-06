@@ -58,18 +58,6 @@ jobs:
           build-args: |
             VITE_API_URL=${{ secrets.VITE_API_URL }}
 
-      - name: Run Drizzle migration
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          # DATABASE_URL dibaca dari .env di VPS langsung
-          script: |
-            cd /srv/imp
-            docker compose pull backend
-            docker compose run --rm backend pnpm db:migrate
-
       - name: Deploy
         uses: appleboy/ssh-action@v1
         with:

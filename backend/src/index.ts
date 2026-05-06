@@ -4,8 +4,20 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { auth } from './lib/auth.js'
 
-const app = new Hono()
 
+
+import { migrate } from 'drizzle-orm/postgres-js/migrator'
+import { db } from './db/index.js'  // sesuaikan import db kamu
+
+// Auto migrate saat startup
+await migrate(db, { migrationsFolder: './src/db/migrations' })
+
+console.log('Migration done')
+
+
+
+
+const app = new Hono()
 // ─── CORS ────────────────────────────────────────────────────────────────────
 // Whitelist eksplisit — jangan pakai wildcard * di production
 app.use(

@@ -12,9 +12,23 @@ COPY backend ./backend
 RUN pnpm --filter @imp/backend build
 
 FROM node:22-alpine AS runner
+RUN corepack enable && corepack prepare pnpm@10.29.3 --activate
+
 WORKDIR /app
 ENV NODE_ENV=production
+
+# copy dependency context
+COPY --from=builder /app/pnpm-lock.yaml ./
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/backend/package.json ./backend/package.json
+COPY --from=builder /app/shared/package.json ./shared/package.json
+
+# install hanya backend deps
+RUN pnpm install --prod --filter @imp/backend
+
+# copy hasil build
 COPY --from=builder /app/backend/dist ./dist
 COPY --from=builder /app/backend/src/db/migrations ./migrations
+
 EXPOSE 3001
 CMD ["node", "dist/index.js"]

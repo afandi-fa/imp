@@ -43,7 +43,7 @@ COPY --from=builder /app/backend/dist ./backend/dist
 # Migration files
 COPY --from=builder /app/backend/drizzle.config.ts ./backend/drizzle.config.ts
 COPY --from=builder /app/backend/src/db/schema ./backend/src/db/schema
-COPY --from=builder /app/backend/drizzle ./backend/drizzle
+COPY --from=builder /app/backend/src/db/migrations ./backend/src/db/migrations
 
 EXPOSE 3001
 CMD ["node", "backend/dist/index.js"]

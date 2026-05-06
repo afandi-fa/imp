@@ -1,0 +1,38 @@
+FROM node:20-alpine AS base
+RUN corepack enable && corepack prepare pnpm@9 --activate
+WORKDIR /app
+
+# ── Deps stage: hanya install production deps ──────────────
+FROM base AS deps
+COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
+COPY shared/package.json ./shared/
+COPY backend/package.json ./backend/
+RUN pnpm install --frozen-lockfile --prod
+
+# ── Build stage ────────────────────────────────────────────
+FROM base AS builder
+COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
+COPY shared/package.json ./shared/
+COPY backend/package.json ./backend/
+RUN pnpm install --frozen-lockfile
+
+COPY shared ./shared
+COPY backend ./backend
+RUN pnpm --filter @imp/shared build
+RUN pnpm --filter @imp/backend build
+
+# ── Runner stage ───────────────────────────────────────────
+FROM node:20-alpine AS runner
+RUN corepack enable && corepack prepare pnpm@9 --activate
+WORKDIR /app
+ENV NODE_ENV=production
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/shared/node_modules ./shared/node_modules
+COPY --from=builder /app/shared/dist ./shared/dist
+COPY --from=builder /app/backend/dist ./backend/dist
+COPY backend/drizzle.config.ts ./backend/drizzle.config.ts
+COPY backend/src/db/schema ./backend/src/db/schema
+
+EXPOSE 3001
+CMD ["node", "backend/dist/index.js"]

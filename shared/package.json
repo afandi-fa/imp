@@ -1,0 +1,27 @@
+{
+  "name": "@imp/shared",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint"
+  },
+  "keywords": [],
+  "exports": {
+    "./permissions": "./permissions.ts",
+    "./types": "./types.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.29.3",
+  "dependencies": {
+    "better-auth": "^1.6.9"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "typescript": "^6.0.3"
+  }
+}

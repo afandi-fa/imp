@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+		"moduleResolution": "bundler",
+		"module": "esnext",
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "types": [
+      "node"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx",
+    "outDir": "./dist"
+  },
+  "exclude": ["node_modules"],
+  "dependencies": {
+    "@imp/shared": "workspace:*"
+  }
+}

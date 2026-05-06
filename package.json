@@ -1,0 +1,20 @@
+{
+  "name": "imp",
+    "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel --filter=backend --filter=frontend dev",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "packageManager": "pnpm@10.29.3",
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.3.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.2"
+  }
+}

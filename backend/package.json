@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsup src/index.ts --format esm --out-dir dist --no-splitting",
+"build": "tsup src/index.ts --format esm --out-dir dist --no-splitting --bundle",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
     "test": "vitest run",

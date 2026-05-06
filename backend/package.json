@@ -9,7 +9,6 @@
     "test": "vitest run",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-
     "start": "node dist/index.js",
     "auth:generate": "tsx node_modules/better-auth/dist/cli/index.js generate",
     "db:push": "drizzle-kit push",
@@ -32,6 +31,7 @@
     "@types/node": "^20.11.17",
     "drizzle-kit": "^0.31.10",
     "tsx": "^4.7.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^4.1.5"
   }
 }

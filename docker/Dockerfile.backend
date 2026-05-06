@@ -28,7 +28,6 @@ ENV NODE_ENV=production
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/shared/node_modules ./shared/node_modules
-COPY --from=builder /app/shared/dist ./shared/dist
 COPY --from=builder /app/backend/dist ./backend/dist
 COPY backend/drizzle.config.ts ./backend/drizzle.config.ts
 COPY backend/src/db/schema ./backend/src/db/schema

@@ -10,7 +10,7 @@ export const auth = betterAuth({
     provider: 'pg',
     schema: authSchema,
   }),
-  baseURL: "https://abae.my.id",
+  baseURL: process.env.BACKEND_URL,
   basePath: "/api/auth",
     trustedOrigins: [process.env.FRONTEND_URL!],
 

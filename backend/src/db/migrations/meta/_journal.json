@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1778066393431,
-      "tag": "0000_dear_maelstrom",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1778066471068,
-      "tag": "0001_dazzling_malice",
+      "when": 1778080222681,
+      "tag": "0000_init",
       "breakpoints": true
     }
   ]

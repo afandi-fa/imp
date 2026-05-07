@@ -1,8 +1,8 @@
-import { createFileRoute, useNavigate, Link, redirect } from '@tanstack/react-router'
+import { createFileRoute, useNavigate, Link } from '@tanstack/react-router'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { authClient, signUp } from '../lib/auth-client'
+import { signUp } from '../lib/auth-client'
 
 const registerSchema = z.object({
   name: z.string().min(2, 'Nama minimal 2 karakter'),
@@ -17,12 +17,6 @@ const registerSchema = z.object({
 type RegisterForm = z.infer<typeof registerSchema>
 
 export const Route = createFileRoute('/register')({
-  beforeLoad: async () => {
-    const { data: session } = await authClient.getSession()
-    if (session) {
-      throw redirect({ to: '/dashboard' })
-    }
-  },
   component: RegisterPage,
 })
 

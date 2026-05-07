@@ -6,13 +6,13 @@ import { auth } from './lib/auth.js'
 
 
 
-import { migrate } from 'drizzle-orm/postgres-js/migrator'
-import { db } from './db/index.js'  // sesuaikan import db kamu
+// import { migrate } from 'drizzle-orm/postgres-js/migrator'
+// import { db } from './db/index.js'  // sesuaikan import db kamu
 
-// Auto migrate saat startup
-await migrate(db, { migrationsFolder: './migrations' })
+// // Auto migrate saat startup
+// await migrate(db, { migrationsFolder: './migrations' })
 
-console.log('Migration done')
+// console.log('Migration done')
 
 
 

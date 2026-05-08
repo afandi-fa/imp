@@ -55,6 +55,7 @@ jobs:
             ghcr.io/${{ github.repository }}/frontend:latest
             ghcr.io/${{ github.repository }}/frontend:${{ github.sha }}
 
+
       - name- name: Deploy to VPS
         uses: appleboy/ssh-action@v1
         with:

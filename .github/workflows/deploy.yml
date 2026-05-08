@@ -63,7 +63,6 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             cd /srv/imp
-            git pull origin main
-            docker compose pull
-            docker compose up -d --force-recreate --remove-orphans
+            docker compose pull --ignore-pull-failures
+            docker compose up -d --pull always --force-recreate --remove-orphans
             docker image prune -f

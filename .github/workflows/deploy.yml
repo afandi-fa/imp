@@ -66,12 +66,9 @@ jobs:
             set -e
 
             cd /opt/imp
-
-            # ambil image terbaru
             docker compose pull
 
-            # restart container paksa pakai image baru
             docker compose up -d --force-recreate
 
-            # bersihin image lama
             docker image prune -f
+

@@ -3,8 +3,6 @@ services:
     image: ghcr.io/afandi-fa/imp/frontend:latest
     container_name: imp-frontend
     restart: unless-stopped
-    depends_on:
-      - backend
     ports:
       - "80:80"
     networks:
@@ -23,3 +21,4 @@ services:
 
 networks:
   app-network:
+    driver: bridge

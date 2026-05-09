@@ -1,4 +1,4 @@
-import { pgTable, text, numeric, pgEnum, timestamp, integer } from 'drizzle-orm/pg-core'
+import { pgTable, text, numeric, pgEnum, timestamp } from 'drizzle-orm/pg-core'
 import { createId } from '@paralleldrive/cuid2'
 import { instances } from './instances.js'
 import { plans } from './plans.js'

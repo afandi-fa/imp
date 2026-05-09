@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.19.14",
+    "@hono/zod-validator": "^0.7.6",
     "@imp/shared": "workspace:*",
     "@paralleldrive/cuid2": "^3.3.0",
     "better-auth": "^1.6.9",

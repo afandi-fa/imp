@@ -9,3 +9,17 @@ export const insertInvoiceSchema = createInsertSchema(invoices, {
 
 export const updateInvoiceSchema = insertInvoiceSchema.partial()
 export const selectInvoiceSchema = createSelectSchema(invoices)
+
+export const payInvoiceSchema = z.object({
+  paymentMethod: z.enum([
+    'BANK_TRANSFER',
+    'QRIS',
+    'OVO',
+    'GOPAY',
+    'DANA',
+    'CREDIT_CARD',
+  ]),
+})
+ 
+export type PayInvoiceInput = z.infer<typeof payInvoiceSchema>
+ 
